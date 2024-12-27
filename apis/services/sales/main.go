@@ -69,6 +69,7 @@ func run(ctx context.Context, log *logger.Logger) error {
 	if err != nil {
 		if errors.Is(err, conf.ErrHelpWanted) {
 			fmt.Println(help)
+			return nil
 		}
 		return fmt.Errorf("parsing config: %w", err)
 	}
