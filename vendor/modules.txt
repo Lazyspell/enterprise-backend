@@ -1,3 +1,6 @@
+# github.com/ardanlabs/conf/v3 v3.2.0
+## explicit; go 1.18
+github.com/ardanlabs/conf/v3
 # github.com/go-json-experiment/json v0.0.0-20241221052253-764075c9f606
 ## explicit; go 1.23
 github.com/go-json-experiment/json
