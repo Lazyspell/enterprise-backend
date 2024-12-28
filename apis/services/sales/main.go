@@ -3,7 +3,9 @@ package main
 import (
 	"context"
 	"errors"
+	"expvar"
 	"fmt"
+	"net/http"
 	"os"
 	"os/signal"
 	"runtime"
@@ -11,6 +13,7 @@ import (
 	"time"
 
 	"github.com/ardanlabs/conf/v3"
+	"github.com/lazyspell/enterprise-backend/apis/services/api/debug"
 	"github.com/lazyspell/enterprise-backend/foundation/logger"
 )
 
@@ -85,6 +88,16 @@ func run(ctx context.Context, log *logger.Logger) error {
 	}
 	log.Info(ctx, "startup", "config", out)
 
+	expvar.NewString("build").Set(cfg.Build)
+
+	//----------------------------------------------------------------------------------------
+
+	go func() {
+		log.Info(ctx, "startup", "status", "debug v1 router started", "host", cfg.Web.DebugHost)
+		if err := http.ListenAndServe(cfg.Web.DebugHost, debug.Mux()); err != nil {
+			log.Error(ctx, "shutdown", "status", "debug v1 router closed", "host", cfg.Web.DebugHost, "msg", err)
+		}
+	}()
 	//----------------------------------------------------------------------------------------
 
 	shutdown := make(chan os.Signal, 1)

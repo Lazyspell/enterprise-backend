@@ -70,7 +70,7 @@ dev-status:
 
 # -------------------------------------------------------------------------
 dev-load:
-	kind load docker-image $(SALES_IMAGE) --name $(KIND_CLUSTER) & \
+	kind load docker-image $(SALES_IMAGE) --name $(KIND_CLUSTER) 
 
 dev-apply:
 	kustomize build zarf/k8s/dev/sales | kubectl apply -f -
@@ -94,6 +94,15 @@ dev-describe-deployment:
 
 dev-describe-sales:
 	kubectl describe pod --namespace=$(NAMESPACE) -l app=$(SALES_APP)
+
+# ==============================================================================
+# Metrics and Tracing
+
+metrics:
+	expvarmon -ports="localhost:3010" -vars="build,requests,goroutines,errors,panics,mem:memstats.HeapAlloc,mem:memstats.HeapSys,mem:memstats.Sys"
+
+statsviz:
+	open http://localhost:3010/debug/statsviz
 # =========================================================================
 # Modules support
 
