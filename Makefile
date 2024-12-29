@@ -9,6 +9,9 @@ help:
 	go run apis/services/sales/main.go --help
 version: 
 	go run apis/services/sales/main.go --version
+
+http:
+	http GET http://localhost:3000/test
 # ==============================================================================
 # Define dependencies
 
