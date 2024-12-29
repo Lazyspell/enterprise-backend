@@ -3,14 +3,15 @@
 package mux
 
 import (
-	"net/http"
+	"os"
 
 	"github.com/lazyspell/enterprise-backend/apis/services/sales/route/sys/checkapi"
+	"github.com/lazyspell/enterprise-backend/foundation/web"
 )
 
 // WebAPI constructs a http.Handler with all applicatoin routes bound.
-func WebAPI() http.Handler {
-	mux := http.NewServeMux()
+func WebAPI(shutdown chan os.Signal) *web.App {
+	mux := web.NewApp(shutdown)
 
 	checkapi.Routes(mux)
 

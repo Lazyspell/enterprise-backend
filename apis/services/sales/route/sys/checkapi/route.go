@@ -1,10 +1,12 @@
 package checkapi
 
-import "net/http"
+import (
+	"github.com/lazyspell/enterprise-backend/foundation/web"
+)
 
-func Routes(mux *http.ServeMux) {
+func Routes(app *web.App) {
 
-	mux.HandleFunc("/liveness", Liveness)
-	mux.HandleFunc("/readiness", Readiness)
+	app.HandleFunc("/liveness", Liveness)
+	app.HandleFunc("/readiness", Readiness)
 
 }
