@@ -12,6 +12,10 @@ version:
 
 http:
 	http GET http://localhost:3000/test
+http-ready:
+	http GET http://localhost:3000/readiness
+http-live:
+	http GET http://localhost:3000/liveness
 # ==============================================================================
 # Define dependencies
 
