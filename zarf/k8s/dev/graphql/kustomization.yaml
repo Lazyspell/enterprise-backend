@@ -1,0 +1,16 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - ../../base/graphql/
+
+patches:
+  - path: ./dev-graphql-patch-deploy.yaml
+  - path: ./dev-graphql-patch-service.yaml
+
+images:
+  - name: graphql-image
+    newName: localhost/jelam/graphql
+    newTag: 0.0.1
+  # - name: metrics-image
+  #   newName: localhost/jelam/metrics
+  #   newTag: 0.0.1

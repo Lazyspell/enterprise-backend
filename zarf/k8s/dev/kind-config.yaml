@@ -30,6 +30,12 @@ nodes:
       # Postgres
       - containerPort: 5432
         hostPort: 5432
+      # Graphql
+      - containerPort: 8080
+        hostPort: 8080
+      # Graphql-Debug
+      - containerPort: 8081
+        hostPort: 8081
       # Prometheus
       - containerPort: 9090
         hostPort: 9090
