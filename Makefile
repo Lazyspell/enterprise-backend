@@ -16,6 +16,11 @@ http-ready:
 	http GET http://localhost:3000/readiness
 http-live:
 	http GET http://localhost:3000/liveness
+
+http-gql:
+	http POST http://localhost:8080/query \
+		Content-Type:application/json \
+		query='mutation createTodo { createTodo(input: { text: "todo", userId: "1" }) { user { id } text done } }'
 # ==============================================================================
 # Define dependencies
 
