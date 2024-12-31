@@ -2,6 +2,10 @@
 
 package model
 
+type Liveness struct {
+	Status string `json:"status"`
+}
+
 type Mutation struct {
 }
 

@@ -2,6 +2,22 @@
 #
 # https://gqlgen.com/getting-started/
 
+# _____________________________________QUERY AND MUTATION_____________________________________
+type Query {
+  todos: [Todo!]!
+  liveness: Liveness!
+}
+
+type Mutation {
+  createTodo(input: NewTodo!): Todo!
+}
+
+# ____________________________________ Types and Input ______________________________________
+
+type Liveness {
+  status: String!
+}
+
 type Todo {
   id: ID!
   text: String!
@@ -14,15 +30,7 @@ type User {
   name: String!
 }
 
-type Query {
-  todos: [Todo!]!
-}
-
 input NewTodo {
   text: String!
   userId: String!
-}
-
-type Mutation {
-  createTodo(input: NewTodo!): Todo!
 }

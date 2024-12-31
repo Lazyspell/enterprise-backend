@@ -21,6 +21,15 @@ func (r *queryResolver) Todos(ctx context.Context) ([]*model.Todo, error) {
 	panic(fmt.Errorf("not implemented: Todos - todos"))
 }
 
+// Liveness is the resolver for the liveness field.
+func (r *queryResolver) Liveness(ctx context.Context) (*model.Liveness, error) {
+	result := &model.Liveness{
+		Status: "ready and live",
+	}
+
+	return result, nil
+}
+
 // Mutation returns MutationResolver implementation.
 func (r *Resolver) Mutation() MutationResolver { return &mutationResolver{r} }
 
