@@ -2,8 +2,9 @@ package checkapi
 
 import (
 	"context"
-	"encoding/json"
 	"net/http"
+
+	"github.com/lazyspell/enterprise-backend/foundation/web"
 )
 
 func Liveness(ctx context.Context, w http.ResponseWriter, r *http.Request) error {
@@ -13,7 +14,7 @@ func Liveness(ctx context.Context, w http.ResponseWriter, r *http.Request) error
 		Status: "ready and alive",
 	}
 
-	return json.NewEncoder(w).Encode(lineness)
+	return web.Respond(ctx, w, lineness, 200)
 
 }
 
@@ -24,6 +25,6 @@ func Readiness(ctx context.Context, w http.ResponseWriter, r *http.Request) erro
 		Status: "status is ready",
 	}
 
-	return json.NewEncoder(w).Encode(readiness)
+	return web.Respond(ctx, w, readiness, 200)
 
 }
