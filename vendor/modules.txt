@@ -9,7 +9,6 @@ github.com/99designs/gqlgen/graphql/handler/extension
 github.com/99designs/gqlgen/graphql/handler/lru
 github.com/99designs/gqlgen/graphql/handler/transport
 github.com/99designs/gqlgen/graphql/introspection
-github.com/99designs/gqlgen/graphql/playground
 # github.com/agnivade/levenshtein v1.2.0
 ## explicit; go 1.21
 github.com/agnivade/levenshtein
